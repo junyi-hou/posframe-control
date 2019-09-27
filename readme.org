@@ -1,0 +1,31 @@
+* Introduction
+This package provides infrastructure for allowing keyboard control of the posframe buffers (e.g., scrolling, switching to the buffer displayed by posframe, etc.)
+
+* Installation
+#+begin_src emacs-lisp
+(use-package posframe-control
+  :quelpa
+  (posframe-control
+   :repo "junyi-hou/posframe-control"
+   :fetcher github))
+#+end_src
+
+* Usage:
+
+Define posframe using ~posframe-control-show~ with the extra keywords, ~:keymap~ and ~:hide-fn~. ~:keymap~ takes, well, a keymap for controlling the posframe, and ~:hide-fn~ takes a wrapper around `posframe-control-hide' with information on the buffer of which the posframe based on.
+
+Commands can be ran inside the posframe by wrapping them around ~posframe-funcall~, e.g.
+#+begin_src emacs-lisp
+(defun posframe-control-next-three-lines ()
+  "Scroll POSFRAME-BUFFER down by 3 lines."
+  (interactive)
+  (posframe-funcall SOME-POSFRAME-BUFFER #'scroll-up 3))
+#+end_src
+which can be included in the keymap specified for ~SOME-POSFRAME-BUFFER~.
+
+** Example of usage:
+[[https://github.com/junyi-hou/eglot-posframe][eglot-posframe]]
+
+* License
+
+GPL-3

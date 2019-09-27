@@ -35,9 +35,12 @@
 
 ;; usage:
 
-;; define posframe using `posframe-show' with extra keywords.
-;; Customize `posframe-control-keymap' to suit your need. For any additional
-;; command, define them using `posframe-control-command'
+;; define posframe using `posframe-control-show' with the extra keywords, `:keymap' and
+;; `:hide-fn'. `:keymap' takes, well, a keymap for controlling the posframe, and
+;; `:hide-fn' takes a wrapper around `posframe-control-hide' with information
+;; on the buffer of which the posframe based on.
+;; 
+;; For any additional command, define them using `posframe-funcall'
 
 ;; example:
 ;; TODO
